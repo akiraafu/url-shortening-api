@@ -457,7 +457,7 @@ footer .linksArea .linksGrounp {
     text-align: start;
 }
 
-footer .linksArea .linksGrounp h4 {
+footer .linksArea .linksGrounp h3 {
     font-size: 18px;
     margin-bottom: 1.5rem;
     font-weight: 700;
@@ -492,6 +492,12 @@ footer .social i:hover {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+@media (max-width: 1250px) {
+    .productForm form input {
+        width: 500px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -555,8 +561,86 @@ footer .social i:hover {
         width: 300px;
     }
 
+    header {
+        padding: 50px;
+    }
+
+    header .headerContent .headerImg img {
+        width: 600px;
+    }
+
+    header .headerContent .headerImg {
+        margin: 70px 0;
+    }
+
+    header .headerContent .headerText h1 {
+        font-size: 3rem;
+    }
+
+    header .headerContent .headerText p {
+        width: 100%;
+    }
+
+    .product {
+        padding: 50px 0 80px 0;
+    }
+
+    .productForm {
+        left: 40px;
+    }
+
     .productForm form input {
         width: 300px;
+    }
+
+    .shortenLinks {
+        top: 90px;
+        left: 40px;
+
+        height: 140px;
+    }
+
+    .shortenLinks .allLinks {
+        width: 80%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin: 0;
+        position: relative;
+    }
+
+    .userLink {
+        width: 120%;
+        overflow: scroll;
+    }
+
+    .shortenLinks .ctaBtn {
+        align-self: flex-end;
+    }
+
+    .feature .featureCards {
+        height: auto;
+        flex-direction: column;
+        gap: 4rem;
+    }
+    .feature .featureCards .featureCard .cardIcon {
+        left: 45%;
+    }
+
+    .feature .featureCards .featureCard h3 {
+        text-align: center;
+    }
+
+    .feature .featureCards .featureCard p {
+        text-align: center;
+    }
+
+    footer {
+        height: auto;
+    }
+    footer .social i {
+        font-size: 18px;
+        margin-right: 0.3rem;
     }
 }
 
@@ -627,6 +711,7 @@ footer .social i:hover {
     }
 
     .shortenLinks .allLinks {
+        width: 100%;
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
@@ -671,7 +756,7 @@ footer .social i:hover {
         width: 10px;
         height: 800px;
         left: 165px;
-        top: 0;
+        top: 100px;
         z-index: 0;
     }
 
