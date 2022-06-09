@@ -721,12 +721,12 @@ footer .social i:hover {
 
     .userLink {
         width: 300px;
-        overflow: scroll;
+        overflow-x: scroll;
     }
 
     .userLink:after {
         position: absolute;
-        top: 60%;
+        top: 65%;
         left: 0;
         content: "";
         width: 300px;
