@@ -431,7 +431,7 @@ header .headerContent .headerImg {
 
 footer {
     width: 100%;
-    height: 45vh;
+    height: auto;
     color: white;
     background-color: var(--VeryDark-Violet);
     display: flex;
