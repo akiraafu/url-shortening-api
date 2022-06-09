@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 -   Solution URL: [https://github.com/akiraafu/url-shortening-api]
--   Live Site URL: [https://url-shortening-reylo918j-akiraafu.vercel.app/]
+-   Live Site URL: [https://url-shortening-kiry43hi9-akiraafu.vercel.app]
 
 ## My process
 
