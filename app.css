@@ -620,6 +620,40 @@ footer .social i:hover {
         height: 50px;
     }
 
+    .shortenLinks {
+        left: 20px;
+        flex-direction: column;
+        height: 180px;
+    }
+
+    .shortenLinks .allLinks {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin: 0;
+        position: relative;
+    }
+
+    .userLink {
+        width: 300px;
+        overflow: scroll;
+    }
+
+    .userLink:after {
+        position: absolute;
+        top: 60%;
+        left: 0;
+        content: "";
+        width: 300px;
+        height: 1px;
+        background-color: var(--Grayish-Violet);
+        z-index: 1;
+    }
+
+    .shortenLinks .ctaBtn {
+        width: 300px;
+    }
+
     .feature {
         padding: 10px 80px;
     }

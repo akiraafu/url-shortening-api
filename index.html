@@ -56,21 +56,26 @@
 
         <section class="product">
             <div class="productForm">
-                <form method="get">
-                    <input id="userInput" type="text" placeholder="Shorten a link here..." />
-                    <!--  required
-                        oninvalid="this.setCustomValidity('Please add a link')" -->
-                    <button class="ctaBtn formBtn">Shorten It!</button>
+                <form id="myform" method="get">
+                    <input
+                        id="userInput"
+                        type="text"
+                        placeholder="Shorten a link here..."
+                        required
+                        oninvalid="setCustomValidity('Please add a link')"
+                    />
+
+                    <button type="submit" class="ctaBtn formBtn">Shorten It!</button>
                 </form>
             </div>
             <ul>
-                <li>
+                <li class="linksShow">
                     <div class="shortenLinks">
                         <div class="allLinks">
                             <div class="userLink"></div>
                             <div class="outputLink">...</div>
                         </div>
-                        <button class="ctaBtn">Copy</button>
+                        <button class="ctaBtn copyBtn">Copy</button>
                     </div>
                 </li>
             </ul>
