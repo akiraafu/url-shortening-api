@@ -9,9 +9,10 @@ menu.onclick = () => {
 
 //links
 const myform = document.getElementById("myform");
-const items = JSON.parse(localStorage.getItem("items")) || [];
+
 
 window.addEventListener("load", () => {
+    const items = JSON.parse(localStorage.getItem("items")) || [];
     items.map((item) => {
         const { originLink, result } = item;
         displayLinks(originLink, result);
