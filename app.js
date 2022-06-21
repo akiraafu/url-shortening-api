@@ -99,11 +99,8 @@ const itemsList = document.querySelector(".linksList");
 // }
 
 function displayLinks(originLink, result) {
-    const linksShow = document.createElement("li");
-    linksShow.classList.add("linksShow");
-
-    const setItem = `
-           
+   const setItem = `
+    <li class="linksShow">
             <div class="shortenLinks">
                 <div class="allLinks">
                     <div class="userLink">${originLink}</div>
@@ -111,9 +108,10 @@ function displayLinks(originLink, result) {
                 </div>
                 <button class="copyBtn">Copy</button>
             </div>
+            </li>
         `;
-    linksShow.innerHTML = setItem || "";
-    itemsList.appendChild(linksShow);
+    itemsList.innerHTML = setItem;
+    const copyBtn = itemsList.querySelector(".copyBtn");
     const copyBtn = linksShow.querySelector(".copyBtn");
     copyBtn.style.backgroundColor = "var(--Cyan)";
     copyBtn.innerHTML = "Copy";
