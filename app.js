@@ -1,6 +1,6 @@
 // navbar
-let menu = document.querySelector(".menu-icon");
-let navLinks = document.querySelector(".navLinks");
+const menu = document.querySelector(".menu-icon");
+const navLinks = document.querySelector(".navLinks");
 
 menu.onclick = () => {
     navLinks.classList.toggle("active");
@@ -8,50 +8,120 @@ menu.onclick = () => {
 };
 
 //links
-let formBtn = document.querySelector(".formBtn");
-let shortenLinks = document.querySelector(".shortenLinks");
-let feature = document.querySelector(".feature");
-let product = document.querySelector(".product");
-let input = document.getElementById("userInput");
-let userLink = document.querySelector(".userLink");
-let outputLink = document.querySelector(".outputLink");
-let copyBtn = document.querySelector(".copyBtn");
+const myform = document.getElementById("myform");
+const items = JSON.parse(localStorage.getItem("items")) || [];
 
-formBtn.addEventListener("click", (e) => {
-    const originLink = input.value;
-    let API_URL = `https://api.shrtco.de/v2/shorten?url=${originLink}`;
+window.addEventListener("load", () => {
+    items.map((item) => {
+        const { originLink, result } = item;
+        displayLinks(originLink, result);
+    });
+});
 
-    if (myform.checkValidity() === true) {
-        shortenLinks.classList.add("active");
-        feature.style.paddingTop = "100px";
-        userLink.innerHTML = input.value;
-        e.preventDefault();
-        shorterLink();
-    }
+myform.addEventListener("submit", addLinks);
 
-    async function shorterLink() {
-        const request = new Request(API_URL);
-        const response = await fetch(request);
-        const links = await response.json();
+function addLinks(e) {
+    // if (myform.checkValidity() === true) {
+    //     e.preventDefault();
+    //     shorterLink();
+    // }
+    e.preventDefault();
+    shorterLink();
+    this.reset();
+}
 
-        let result = links["result"]["full_short_link2"];
+const shorterLink = async () => {
+    const originLink = document.getElementById("userInput").value;
+    let result = await getData(originLink);
+    addToLocalStorage(originLink, result);
+    displayLinks(originLink, result);
+    return originLink;
+};
 
-        outputLink.innerHTML = result;
+async function getData(originLink) {
+    const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${originLink}`);
+    const links = await response.json();
+    const result = links["result"]["full_short_link2"];
 
-        outputLink.innerHTML;
+    console.log(result);
+    return result;
+}
 
-        // copy button function
+const addToLocalStorage = (originLink, result) => {
+    const item = {
+        originLink,
+        result,
+    };
+    items.push(item);
+    localStorage.setItem("items", JSON.stringify(items));
+};
 
-        copyBtn.addEventListener("click", () => {
-            navigator.clipboard.writeText(result);
-            copyBtn.style.backgroundColor = "var(--Dark-Violet)";
-            copyBtn.innerHTML = "Copied!";
-        });
-    }
+const itemsList = document.querySelector(".linksList");
 
-    input.value = "";
-    let copyBtn = document.querySelector(".copyBtn");
+// function displayLinks(originLink, result) {
+//     itemsList.innerHTML = "";
+//     items.forEach((item) => {
+//         // for (let i = 0; i < Object.keys(JSON.parse(localStorage.getItem("items"))).length; i++) {
 
+//         const linksShow = document.createElement("li");
+//         const shortenLinks = document.createElement("div");
+//         const allLinks = document.createElement("div");
+//         const userLink = document.createElement("div");
+//         const outputLink = document.createElement("div");
+//         const copyBtn = document.createElement("button");
+
+//         linksShow.classList.add("linksShow");
+//         shortenLinks.classList.add("shortenLinks");
+//         allLinks.classList.add("allLinks");
+//         userLink.classList.add("userLink");
+//         outputLink.classList.add("outputLink");
+//         copyBtn.classList.add("copyBtn");
+
+//         userLink.innerHTML = `${originLink}`;
+//         outputLink.innerText = `${result}`;
+
+//         allLinks.appendChild(userLink);
+//         allLinks.appendChild(outputLink);
+//         shortenLinks.appendChild(allLinks);
+//         shortenLinks.appendChild(copyBtn);
+//         linksShow.appendChild(shortenLinks);
+//         itemsList.appendChild(linksShow);
+
+//         // copy button function
+//         copyBtn.style.backgroundColor = "var(--Cyan)";
+//         copyBtn.innerHTML = "Copy";
+//         copyBtn.addEventListener("click", () => {
+//             navigator.clipboard.writeText(result);
+//             copyBtn.style.backgroundColor = "var(--Dark-Violet)";
+//             copyBtn.innerHTML = "Copied!";
+//         });
+//     });
+// }
+
+function displayLinks(originLink, result) {
+    const linksShow = document.createElement("li");
+    linksShow.classList.add("linksShow");
+
+    const setItem = `
+           
+            <div class="shortenLinks">
+                <div class="allLinks">
+                    <div class="userLink">${originLink}</div>
+                    <div class="outputLink">${result}</div>
+                </div>
+                <button class="copyBtn">Copy</button>
+            </div>
+        `;
+    linksShow.innerHTML = setItem;
+    itemsList.appendChild(linksShow);
+    const copyBtn = linksShow.querySelector(".copyBtn");
     copyBtn.style.backgroundColor = "var(--Cyan)";
     copyBtn.innerHTML = "Copy";
-});
+    // copy button function
+
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(result);
+        copyBtn.style.backgroundColor = "var(--Dark-Violet)";
+        copyBtn.innerHTML = "Copied!";
+    });
+}
