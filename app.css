@@ -74,7 +74,7 @@ nav .logo {
     opacity: 0;
 }
 .move .line3 {
-    transform: rotate(-45deg) translate(5px, -10px);
+    transform: rotate(-45deg) translate(6px, -11px);
 }
 
 .navbar {
@@ -134,7 +134,7 @@ header {
     flex-direction: column;
     background-color: white;
     padding: 30px 80px 100px 80px;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 header .headerContent {
@@ -201,8 +201,8 @@ header .headerContent .headerImg {
 
 .productForm {
     position: absolute;
-    left: 80px;
-    top: -70%;
+
+    top: -80px;
     width: 90%;
     height: 150px;
     background: var(--Dark-Violet) url(./images/bg-shorten-desktop.svg);
@@ -245,22 +245,28 @@ header .headerContent .headerImg {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.shortenLinks {
-    position: absolute;
-    top: 100px;
-    left: 80px;
+.linksList {
+    margin-top: 40px;
+    padding: 0;
+    text-align: left;
+    list-style: none;
     width: 90%;
-    height: 70px;
-    display: none;
+}
+
+.linksShow {
+    display: flex;
+}
+
+.shortenLinks {
+    width: 100%;
+    min-height: 70px;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-}
-
-.active {
-    display: flex;
+    margin-bottom: 1rem;
 }
 
 .shortenLinks .allLinks {
@@ -269,21 +275,29 @@ header .headerContent .headerImg {
     align-items: center;
     justify-content: space-between;
     margin-right: 2rem;
+    overflow: hidden;
 }
 
 .userLink {
     font-size: 18px;
     display: inline-block;
     color: var(--VeryDark-Violet);
+    overflow: scroll;
+    padding-right: 1rem;
+}
+
+.userLink::-webkit-scrollbar {
+    display: none;
 }
 
 .outputLink {
     font-size: 18px;
     display: inline-block;
     color: var(--Cyan);
+    padding-left: 1rem;
 }
 
-.shortenLinks .ctaBtn {
+.shortenLinks .copyBtn {
     border: none;
     padding: 10px 30px;
     font-size: 15px;
@@ -500,6 +514,12 @@ footer .social i:hover {
     }
 }
 
+@media (max-width: 1065px) {
+    .feature .featureCards .featureCard {
+        height: 450px;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 40px 20px;
@@ -585,10 +605,6 @@ footer .social i:hover {
         padding: 50px 0 80px 0;
     }
 
-    .productForm {
-        left: 40px;
-    }
-
     .productForm form input {
         width: 300px;
     }
@@ -614,7 +630,7 @@ footer .social i:hover {
         overflow: scroll;
     }
 
-    .shortenLinks .ctaBtn {
+    .shortenLinks .copyBtn {
         align-self: flex-end;
     }
 
@@ -623,6 +639,7 @@ footer .social i:hover {
         flex-direction: column;
         gap: 4rem;
     }
+
     .feature .featureCards .featureCard .cardIcon {
         left: 45%;
     }
@@ -644,7 +661,35 @@ footer .social i:hover {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 650px) {
+    header .headerContent .headerText h1 {
+        font-size: 2rem;
+    }
+    header .headerContent .headerText p {
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+    .productForm form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .productForm form input {
+        flex: 1;
+        height: 50px;
+        margin: 0 0 15px 0;
+    }
+
+    .productForm form .formBtn {
+        width: 100%;
+        height: 50px;
+    }
+
+    .userLink {
+        height: 70px;
+    }
+}
+@media (max-width: 450px) {
     body {
         height: 100%;
     }
@@ -684,10 +729,6 @@ footer .social i:hover {
         margin: 10px 0 50px 0;
     }
 
-    .productForm {
-        left: 20px;
-    }
-
     .productForm form {
         flex-direction: column;
         align-items: center;
@@ -721,12 +762,11 @@ footer .social i:hover {
 
     .userLink {
         width: 300px;
-        overflow-x: scroll;
     }
 
     .userLink:after {
         position: absolute;
-        top: 65%;
+        top: 70%;
         left: 0;
         content: "";
         width: 300px;
@@ -735,7 +775,11 @@ footer .social i:hover {
         z-index: 1;
     }
 
-    .shortenLinks .ctaBtn {
+    .outputLink {
+        padding-left: 0;
+    }
+
+    .shortenLinks .copyBtn {
         width: 300px;
     }
 
