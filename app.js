@@ -9,10 +9,9 @@ menu.onclick = () => {
 
 //links
 const myform = document.getElementById("myform");
-
+const items = JSON.parse(localStorage.getItem("items")) || [];
 
 window.addEventListener("load", () => {
-    const items = JSON.parse(localStorage.getItem("items")) || [];
     items.map((item) => {
         const { originLink, result } = item;
         displayLinks(originLink, result);
@@ -113,7 +112,7 @@ function displayLinks(originLink, result) {
                 <button class="copyBtn">Copy</button>
             </div>
         `;
-    linksShow.innerHTML = setItem;
+    linksShow.innerHTML = setItem || "";
     itemsList.appendChild(linksShow);
     const copyBtn = linksShow.querySelector(".copyBtn");
     copyBtn.style.backgroundColor = "var(--Cyan)";
