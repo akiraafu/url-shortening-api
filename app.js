@@ -12,6 +12,7 @@ const myform = document.getElementById("myform");
 const items = JSON.parse(localStorage.getItem("items")) || [];
 
 window.addEventListener("load", () => {
+    const items = JSON.parse(localStorage.getItem("items")) || [];
     items.map((item) => {
         const { originLink, result } = item;
         displayLinks(originLink, result);
@@ -58,6 +59,37 @@ const addToLocalStorage = (originLink, result) => {
 
 const itemsList = document.querySelector(".linksList");
 
+function displayLinks(originLink, result) {
+    const linksShow = document.createElement("li");
+    linksShow.classList.add("linksShow");
+
+    const setItem = `
+
+            <div class="shortenLinks">
+                <div class="allLinks">
+                    <div class="userLink">${originLink}</div>
+                    <div class="outputLink">${result}</div>
+                </div>
+                <button class="copyBtn">Copy</button>
+            </div>
+          
+        `;
+    linksShow.innerHTML = setItem || "";
+    itemsList.appendChild(linksShow);
+
+    const copyBtn = linksShow.querySelector(".copyBtn");
+
+    copyBtn.style.backgroundColor = "var(--Cyan)";
+    copyBtn.innerHTML = "Copy";
+    // copy button function
+
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(result);
+        copyBtn.style.backgroundColor = "var(--Dark-Violet)";
+        copyBtn.innerHTML = "Copied!";
+    });
+}
+
 // function displayLinks(originLink, result) {
 //     itemsList.innerHTML = "";
 //     items.forEach((item) => {
@@ -97,29 +129,3 @@ const itemsList = document.querySelector(".linksList");
 //         });
 //     });
 // }
-
-function displayLinks(originLink, result) {
-   const setItem = `
-    <li class="linksShow">
-            <div class="shortenLinks">
-                <div class="allLinks">
-                    <div class="userLink">${originLink}</div>
-                    <div class="outputLink">${result}</div>
-                </div>
-                <button class="copyBtn">Copy</button>
-            </div>
-            </li>
-        `;
-    itemsList.innerHTML = setItem;
-    
-    const copyBtn = itemsList.querySelector(".copyBtn");
-    copyBtn.style.backgroundColor = "var(--Cyan)";
-    copyBtn.innerHTML = "Copy";
-    // copy button function
-
-    copyBtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(result);
-        copyBtn.style.backgroundColor = "var(--Dark-Violet)";
-        copyBtn.innerHTML = "Copied!";
-    });
-}
