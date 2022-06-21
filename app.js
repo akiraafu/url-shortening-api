@@ -111,8 +111,8 @@ function displayLinks(originLink, result) {
             </li>
         `;
     itemsList.innerHTML = setItem;
+    
     const copyBtn = itemsList.querySelector(".copyBtn");
-    const copyBtn = linksShow.querySelector(".copyBtn");
     copyBtn.style.backgroundColor = "var(--Cyan)";
     copyBtn.innerHTML = "Copy";
     // copy button function
