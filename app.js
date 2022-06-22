@@ -54,21 +54,20 @@ const addToLocalStorage = (originLink, result) => {
 const itemsList = document.querySelector(".linksList");
 
 function displayLinks(originLink, result) {
+     const itemsList = document.querySelector(".linksList");
     const linksShow = document.createElement("li");
-    linksShow.classList.add("linksShow");
-
+    linksShow.innerHTML = "";
     const setItem = `
-
             <div class="shortenLinks">
                 <div class="allLinks">
                     <div class="userLink">${originLink}</div>
                     <div class="outputLink">${result}</div>
                 </div>
                 <button class="copyBtn">Copy</button>
-            </div>
-          
+            </div>    
         `;
-    linksShow.innerHTML = setItem || "";
+    linksShow.innerHTML = setItem;
+    linksShow.classList.add("linksShow");
     itemsList.appendChild(linksShow);
 
     const copyBtn = linksShow.querySelector(".copyBtn");
