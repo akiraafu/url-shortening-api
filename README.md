@@ -37,7 +37,7 @@ Users should be able to:
 ### Links
 
 -   Solution URL: [https://github.com/akiraafu/url-shortening-api]
--   Live Site URL: [https://url-shortening-bsg2kjldu-akiraafu.vercel.app]
+-   Live Site URL: [https://url-shortening-api-lac.vercel.app/]
 
 ## My process
 
@@ -46,7 +46,6 @@ Users should be able to:
 -   Semantic HTML5 markup
 -   CSS custom properties
 -   Flexbox
--   Mobile-first workflow
 -   JavaScript
 -   Fetch
 -   API
@@ -80,55 +79,36 @@ To see how you can add code snippets, see below:
 
 ```js
 const proudOfThisFunc = () => {
-    formBtn.addEventListener("click", (e) => {
-        const originLink = input.value;
-        let API_URL = `https://api.shrtco.de/v2/shorten?url=${originLink}`;
+   async function getData(originLink) {
+    const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${originLink}`);
+    const links = await response.json();
+    const result = links["result"]["full_short_link2"];
 
-        if (myform.checkValidity() === true) {
-            shortenLinks.classList.add("active");
-            feature.style.paddingTop = "100px";
-            userLink.innerHTML = input.value;
-            e.preventDefault();
-            shorterLink();
-        }
+    console.log(result);
+    return result;
+}
 
-        async function shorterLink() {
-            const request = new Request(API_URL);
-            const response = await fetch(request);
-            const links = await response.json();
-
-            let result = links["result"]["full_short_link2"];
-
-            outputLink.innerHTML = result;
-
-            outputLink.innerHTML;
-
-            // copy button function
-
-            copyBtn.addEventListener("click", () => {
-                navigator.clipboard.writeText(result);
-                copyBtn.style.backgroundColor = "var(--Dark-Violet)";
-                copyBtn.innerHTML = "Copied!";
-            });
-        }
-
-        input.value = "";
-        let copyBtn = document.querySelector(".copyBtn");
-
-        copyBtn.style.backgroundColor = "var(--Cyan)";
-        copyBtn.innerHTML = "Copy";
-    });
+const storeData = (originLink, result) => {
+    const item = {
+        originLink,
+        result,
+    };
+    items.push(item);
+    localStorage.setItem("items", JSON.stringify(items));
+};
 };
 ```
 
 ### Continued development
 
-Create more media queries for more devices
+none
 
 ### Useful resources
 
 -   [MDN](https://developer.mozilla.org/en-US/)
 -   [Stackoverflow](https://stackoverflow.com/)
+-   [Javascript30](https://javascript30.com/)
+-   [Youtube @Tyler Potts](https://www.youtube.com/watch?v=6eFwtaZf6zc/)
 
 ## Author
 
