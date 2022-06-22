@@ -810,6 +810,7 @@ footer .social i:hover {
     }
 
     .feature .featureCards .featureCard {
+        height: 250px;
         margin-bottom: 4rem;
     }
 
