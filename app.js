@@ -28,7 +28,7 @@ function addLinks(e) {
 const shorterLink = async () => {
     const originLink = document.getElementById("userInput").value;
     let result = await getData(originLink);
-    addToLocalStorage(originLink, result);
+    storeData(originLink, result);
     displayLinks(originLink, result);
     return originLink;
 };
@@ -42,7 +42,7 @@ async function getData(originLink) {
     return result;
 }
 
-const addToLocalStorage = (originLink, result) => {
+const storeData = (originLink, result) => {
     const item = {
         originLink,
         result,
@@ -90,43 +90,3 @@ window.addEventListener("load", () => {
         displayLinks(originLink, result);
     });
 });
-
-// function displayLinks(originLink, result) {
-//     itemsList.innerHTML = "";
-//     items.forEach((item) => {
-//         // for (let i = 0; i < Object.keys(JSON.parse(localStorage.getItem("items"))).length; i++) {
-
-//         const linksShow = document.createElement("li");
-//         const shortenLinks = document.createElement("div");
-//         const allLinks = document.createElement("div");
-//         const userLink = document.createElement("div");
-//         const outputLink = document.createElement("div");
-//         const copyBtn = document.createElement("button");
-
-//         linksShow.classList.add("linksShow");
-//         shortenLinks.classList.add("shortenLinks");
-//         allLinks.classList.add("allLinks");
-//         userLink.classList.add("userLink");
-//         outputLink.classList.add("outputLink");
-//         copyBtn.classList.add("copyBtn");
-
-//         userLink.innerHTML = `${originLink}`;
-//         outputLink.innerText = `${result}`;
-
-//         allLinks.appendChild(userLink);
-//         allLinks.appendChild(outputLink);
-//         shortenLinks.appendChild(allLinks);
-//         shortenLinks.appendChild(copyBtn);
-//         linksShow.appendChild(shortenLinks);
-//         itemsList.appendChild(linksShow);
-
-//         // copy button function
-//         copyBtn.style.backgroundColor = "var(--Cyan)";
-//         copyBtn.innerHTML = "Copy";
-//         copyBtn.addEventListener("click", () => {
-//             navigator.clipboard.writeText(result);
-//             copyBtn.style.backgroundColor = "var(--Dark-Violet)";
-//             copyBtn.innerHTML = "Copied!";
-//         });
-//     });
-// }
