@@ -51,10 +51,11 @@ const addToLocalStorage = (originLink, result) => {
     localStorage.setItem("items", JSON.stringify(items));
 };
 
+
 const itemsList = document.querySelector(".linksList");
+itemsList.innerHTML = "";
 
 function displayLinks(originLink, result) {
-     const itemsList = document.querySelector(".linksList");
     const linksShow = document.createElement("li");
     linksShow.innerHTML = "";
     const setItem = `
