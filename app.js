@@ -11,13 +11,7 @@ menu.onclick = () => {
 const myform = document.getElementById("myform");
 const items = JSON.parse(localStorage.getItem("items")) || [];
 
-window.addEventListener("load", () => {
-    const items = JSON.parse(localStorage.getItem("items")) || [];
-    items.map((item) => {
-        const { originLink, result } = item;
-        displayLinks(originLink, result);
-    });
-});
+
 
 myform.addEventListener("submit", addLinks);
 
@@ -89,6 +83,14 @@ function displayLinks(originLink, result) {
         copyBtn.innerHTML = "Copied!";
     });
 }
+
+window.addEventListener("load", () => {
+    const items = JSON.parse(localStorage.getItem("items")) || [];
+    items.map((item) => {
+        const { originLink, result } = item;
+        displayLinks(originLink, result);
+    });
+});
 
 // function displayLinks(originLink, result) {
 //     itemsList.innerHTML = "";
