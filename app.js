@@ -53,7 +53,6 @@ const addToLocalStorage = (originLink, result) => {
 
 
 const itemsList = document.querySelector(".linksList");
-itemsList.innerHTML = "";
 
 function displayLinks(originLink, result) {
     const linksShow = document.createElement("li");
